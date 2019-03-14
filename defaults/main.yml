@@ -19,7 +19,8 @@ monit_install_path:      /usr/bin
 monit_config_path:       /etc/monit.d
 monit_db_path:           /var/lib/monit
 
-monit_download_path:     /tmp
+monit_temp_path:         /tmp
+monit_download_path:     "{{ monit_temp_path }}"
 
 monit_clean_tarball:     true
 

@@ -15,12 +15,12 @@
 
 
 - name: copy scripts to server
-  copy: src="../files/{{ item }}"  dest="/tmp/"  mode="a+x"
+  copy: src="../files/{{ item }}"  dest="{{ monit_temp_path }}/"  mode="a+x"
   with_items:
     - check-monit.sh
 
 - name: check if specific version of monit has been installed
-  shell: LC_ALL="en_US.UTF-8"  /tmp/check-monit.sh  {{ monit_version }}
+  shell: LC_ALL="en_US.UTF-8"  {{ monit_temp_path }}/check-monit.sh  {{ monit_version }}
   ignore_errors: true
   changed_when: false
   register: monit_is_installed
